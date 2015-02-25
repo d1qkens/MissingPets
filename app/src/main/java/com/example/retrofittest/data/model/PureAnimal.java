@@ -1,22 +1,24 @@
 package com.example.retrofittest.data.model;
 
 public class PureAnimal {
-    int id;
-    String pet, gender, nickname, breed, color, location, contacts, info;
+    int pet_type_id;
+    double location_lat, location_lon;
+    boolean gender;
+    String id, nickname, breed, address, color, contacts, additional_info, photo;
 
-    PureAnimal(int id) {
+    PureAnimal(String id) {
         this.id = id;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public String getPet() {
-        return pet;
+    public int getPetTypeId() {
+        return pet_type_id;
     }
 
-    public String getGender() {
+    public boolean getGender() {
         return gender;
     }
 
@@ -32,8 +34,16 @@ public class PureAnimal {
         return color;
     }
 
-    public String getLocation() {
-        return location;
+    public double getLocationLat() {
+        return location_lat;
+    }
+
+    public double getLocationLon() {
+        return location_lon;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public String getContacts() {
@@ -41,7 +51,11 @@ public class PureAnimal {
     }
 
     public String getInfo() {
-        return info;
+        return additional_info;
+    }
+
+    public String getPhoto() {
+        return photo;
     }
 
 

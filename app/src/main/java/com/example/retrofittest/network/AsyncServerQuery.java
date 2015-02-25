@@ -37,23 +37,29 @@ public class AsyncServerQuery extends AsyncTask<Void, Void, PureAnimal[]> {
 
         for (int i = 0; i < animals.length; i++) {
             Cursor c = context.getContentResolver().query(ContentApiProvider.CONTENT_URI,
-                    new String[] {MissingPetsDatabase.PetsTable.ID},
-                    MissingPetsDatabase.PetsTable.ID+"=?", new String[] {String.valueOf(animals[i].getId())},
+                    new String[]{MissingPetsDatabase.PetsTable.ID},
+                    MissingPetsDatabase.PetsTable.ID + "=?", new String[]{String.valueOf(animals[i].getId())},
                     null);
-            if(c.getCount()<=0){
+
+            if (c.getCount() <= 0) {
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(MissingPetsDatabase.PetsTable.ID, animals[i].getId());
-                contentValues.put(MissingPetsDatabase.PetsTable.PET, animals[i].getPet());
+                contentValues.put(MissingPetsDatabase.PetsTable.PET_TYPE_ID, animals[i].getPetTypeId());
                 contentValues.put(MissingPetsDatabase.PetsTable.GENDER, animals[i].getGender());
                 contentValues.put(MissingPetsDatabase.PetsTable.NICKNAME, animals[i].getNickname());
                 contentValues.put(MissingPetsDatabase.PetsTable.BREED, animals[i].getBreed());
                 contentValues.put(MissingPetsDatabase.PetsTable.COLOR, animals[i].getColor());
-                contentValues.put(MissingPetsDatabase.PetsTable.LOCATION, animals[i].getLocation());
+                contentValues.put(MissingPetsDatabase.PetsTable.LOCATION_LAT, animals[i].getLocationLat());
+                contentValues.put(MissingPetsDatabase.PetsTable.LOCATION_LON, animals[i].getLocationLon());
+                contentValues.put(MissingPetsDatabase.PetsTable.ADDRESS, animals[i].getAddress());
                 contentValues.put(MissingPetsDatabase.PetsTable.CONTACTS, animals[i].getContacts());
-                contentValues.put(MissingPetsDatabase.PetsTable.INFO, animals[i].getInfo());
+                contentValues.put(MissingPetsDatabase.PetsTable.ADDITIONAL_INFO, animals[i].getInfo());
+                contentValues.put(MissingPetsDatabase.PetsTable.PHOTO, animals[i].getPhoto());
                 context.getContentResolver().insert(ContentApiProvider.CONTENT_URI, contentValues);
             }
-
         }
+
     }
+
 }
+
