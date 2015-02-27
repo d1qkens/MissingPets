@@ -41,7 +41,7 @@ public class ContentApiProvider extends ContentProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         ContentValues contentValues = new ContentValues(values);
-        long rowId = db.insert(MissingPetsDatabase.PetsTable.TABLE_NAME, null, contentValues);
+        long rowId = db.insertWithOnConflict(MissingPetsDatabase.PetsTable.TABLE_NAME, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
 
         if(rowId<=0){
             try {

@@ -11,7 +11,7 @@
         android:src="@drawable/doggie"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_margin="10dp" />
 
     <TextView
         android:layout_marginLeft="30dp"

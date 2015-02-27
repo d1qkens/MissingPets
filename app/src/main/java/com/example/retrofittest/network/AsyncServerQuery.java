@@ -2,7 +2,6 @@ package com.example.retrofittest.network;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.os.AsyncTask;
 
 import com.example.retrofittest.Address;
@@ -28,6 +27,22 @@ public class AsyncServerQuery extends AsyncTask<Void, Void, PureAnimal[]> {
 
 
         MyApi myDog = restAdapter.create(MyApi.class); //this is how retrofit create your api
+        PureAnimal animal = new PureAnimal();
+        animal.setPet_type_id(1);
+        animal.setGender(true);
+        animal.setNickname("Джекки");
+        animal.setBreed("Боксер");
+        animal.setColor("белый");
+        animal.setLocation_lat(11.01);
+        animal.setLocation_lon(01.11);
+        animal.setAddress("Крытый рынок");
+        animal.setContacts("0522334422");
+        animal.setAdditional_info("Хромает");
+        animal.setPhoto("http://afsddsf.com/sdf.jpg");
+        PureAnimal newAnimal = myDog.addAnimal(animal);
+
+        context.getContentResolver().insert(ContentApiProvider.CONTENT_URI, putData(newAnimal));
+                //myDog.addAnimal(1, true, "Чакки", "Боксер", "белый", 11.21, 33.1, "Крытый рынок", "0522334422", "Хромает", "http://");
         PureAnimal[] animals = myDog.fetchAnimal();
         return animals;
     }
@@ -36,29 +51,27 @@ public class AsyncServerQuery extends AsyncTask<Void, Void, PureAnimal[]> {
     protected void onPostExecute(PureAnimal[] animals) {
 
         for (int i = 0; i < animals.length; i++) {
-            Cursor c = context.getContentResolver().query(ContentApiProvider.CONTENT_URI,
-                    new String[]{MissingPetsDatabase.PetsTable.ID},
-                    MissingPetsDatabase.PetsTable.ID + "=?", new String[]{String.valueOf(animals[i].getId())},
-                    null);
-
-            if (c.getCount() <= 0) {
-                ContentValues contentValues = new ContentValues();
-                contentValues.put(MissingPetsDatabase.PetsTable.ID, animals[i].getId());
-                contentValues.put(MissingPetsDatabase.PetsTable.PET_TYPE_ID, animals[i].getPetTypeId());
-                contentValues.put(MissingPetsDatabase.PetsTable.GENDER, animals[i].getGender());
-                contentValues.put(MissingPetsDatabase.PetsTable.NICKNAME, animals[i].getNickname());
-                contentValues.put(MissingPetsDatabase.PetsTable.BREED, animals[i].getBreed());
-                contentValues.put(MissingPetsDatabase.PetsTable.COLOR, animals[i].getColor());
-                contentValues.put(MissingPetsDatabase.PetsTable.LOCATION_LAT, animals[i].getLocationLat());
-                contentValues.put(MissingPetsDatabase.PetsTable.LOCATION_LON, animals[i].getLocationLon());
-                contentValues.put(MissingPetsDatabase.PetsTable.ADDRESS, animals[i].getAddress());
-                contentValues.put(MissingPetsDatabase.PetsTable.CONTACTS, animals[i].getContacts());
-                contentValues.put(MissingPetsDatabase.PetsTable.ADDITIONAL_INFO, animals[i].getInfo());
-                contentValues.put(MissingPetsDatabase.PetsTable.PHOTO, animals[i].getPhoto());
-                context.getContentResolver().insert(ContentApiProvider.CONTENT_URI, contentValues);
-            }
+            ContentValues contentValues = putData(animals[i]);
+            context.getContentResolver().insert(ContentApiProvider.CONTENT_URI, contentValues);
         }
 
+    }
+
+    public static ContentValues putData(PureAnimal animal) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MissingPetsDatabase.PetsTable.REMOTE_ID, animal.getRemoteId());
+        contentValues.put(MissingPetsDatabase.PetsTable.PET_TYPE_ID, animal.getPetTypeId());
+        contentValues.put(MissingPetsDatabase.PetsTable.GENDER, animal.getGender());
+        contentValues.put(MissingPetsDatabase.PetsTable.NICKNAME, animal.getNickname());
+        contentValues.put(MissingPetsDatabase.PetsTable.BREED, animal.getBreed());
+        contentValues.put(MissingPetsDatabase.PetsTable.COLOR, animal.getColor());
+        contentValues.put(MissingPetsDatabase.PetsTable.LOCATION_LAT, animal.getLocationLat());
+        contentValues.put(MissingPetsDatabase.PetsTable.LOCATION_LON, animal.getLocationLon());
+        contentValues.put(MissingPetsDatabase.PetsTable.ADDRESS, animal.getAddress());
+        contentValues.put(MissingPetsDatabase.PetsTable.CONTACTS, animal.getContacts());
+        contentValues.put(MissingPetsDatabase.PetsTable.ADDITIONAL_INFO, animal.getInfo());
+        contentValues.put(MissingPetsDatabase.PetsTable.PHOTO, animal.getPhoto());
+        return contentValues;
     }
 
 }

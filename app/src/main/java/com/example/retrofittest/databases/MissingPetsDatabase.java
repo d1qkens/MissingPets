@@ -9,10 +9,11 @@ import android.util.Log;
 
 public class MissingPetsDatabase extends SQLiteOpenHelper {
 
-    public static final int VERSION = 14;
+    public static final int VERSION = 15;
     public static final String DB_NAME = "missingpets.db";
     public static final String CREATE_TABLE = "CREATE TABLE " + PetsTable.TABLE_NAME + " ("
-            + PetsTable.ID + " VARCHAR(50) PRIMARY KEY, "
+            + PetsTable.ID + " INTEGER PRIMARY KEY, "
+            + PetsTable.REMOTE_ID + " VARCHAR(50) UNIQUE, "
             + PetsTable.PET_TYPE_ID + " INTEGER, "
             + PetsTable.GENDER + " INTEGER, "
             + PetsTable.NICKNAME + " VARCHAR(20), "
@@ -49,6 +50,7 @@ public class MissingPetsDatabase extends SQLiteOpenHelper {
     public class PetsTable {
         public static final String TABLE_NAME = "missing";
         public static final String ID = BaseColumns._ID;
+        public static final String REMOTE_ID = "Remote_id";
         public static final String PET_TYPE_ID = "Pet_type";
         public static final String GENDER = "Gender";
         public static final String NICKNAME = "Nickname";

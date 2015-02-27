@@ -29,6 +29,18 @@ public class FragmentList extends Fragment implements LoaderManager.LoaderCallba
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().getSupportLoaderManager().restartLoader(PETS_INFO_LOADER, null, this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().getSupportLoaderManager().restartLoader(PETS_INFO_LOADER, null, this);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         listView = (ListView) view.findViewById(R.id.listView);
@@ -66,7 +78,6 @@ public class FragmentList extends Fragment implements LoaderManager.LoaderCallba
                     new String[] {MissingPetsDatabase.PetsTable.ADDRESS, MissingPetsDatabase.PetsTable.NICKNAME},
                     new int[] {R.id.address, R.id.nickname}, 0);
             listView.setAdapter(adapter);
-
         }
     }
 
