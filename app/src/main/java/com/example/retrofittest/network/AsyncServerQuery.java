@@ -27,21 +27,21 @@ public class AsyncServerQuery extends AsyncTask<Void, Void, PureAnimal[]> {
 
 
         MyApi myDog = restAdapter.create(MyApi.class); //this is how retrofit create your api
-        PureAnimal animal = new PureAnimal();
-        animal.setPet_type_id(1);
-        animal.setGender(true);
-        animal.setNickname("Джекки");
-        animal.setBreed("Боксер");
-        animal.setColor("белый");
-        animal.setLocation_lat(11.01);
-        animal.setLocation_lon(01.11);
-        animal.setAddress("Крытый рынок");
-        animal.setContacts("0522334422");
-        animal.setAdditional_info("Хромает");
-        animal.setPhoto("http://afsddsf.com/sdf.jpg");
-        PureAnimal newAnimal = myDog.addAnimal(animal);
+        //PureAnimal animal = new PureAnimal();
+//        animal.setPet_type_id(1);
+//        animal.setGender(true);
+//        animal.setNickname("Джекки");
+//        animal.setBreed("Боксер");
+//        animal.setColor("белый");
+//        animal.setLocation_lat(11.01);
+//        animal.setLocation_lon(01.11);
+//        animal.setAddress("Крытый рынок");
+//        animal.setContacts("0522334422");
+//        animal.setAdditional_info("Хромает");
+//        animal.setPhoto("http://afsddsf.com/sdf.jpg");
+//        PureAnimal newAnimal = myDog.addAnimal(animal);
 
-        context.getContentResolver().insert(ContentApiProvider.CONTENT_URI, putData(newAnimal));
+        //context.getContentResolver().insert(ContentApiProvider.CONTENT_URI, putData(newAnimal));
                 //myDog.addAnimal(1, true, "Чакки", "Боксер", "белый", 11.21, 33.1, "Крытый рынок", "0522334422", "Хромает", "http://");
         PureAnimal[] animals = myDog.fetchAnimal();
         return animals;

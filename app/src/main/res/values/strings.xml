@@ -3,5 +3,9 @@
 
     <string name="app_name">Утерянные животные</string>
     <string name="action_settings">Настройки</string>
+    <string name="title_activity_info_page">InfoPage</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_registered_missing_pets">RegisteredMissingPets</string>
 
 </resources>
