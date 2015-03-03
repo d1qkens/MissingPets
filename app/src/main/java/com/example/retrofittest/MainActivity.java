@@ -6,6 +6,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -27,7 +30,7 @@ public class MainActivity extends ActionBarActivity implements ListFragment.OnFr
             getContentResolver().delete(ContentApiProvider.CONTENT_URI, null, null);
             serverQuery = (AsyncServerQuery) new AsyncServerQuery(this).execute();
         } else
-            Toast.makeText(this, "Нет соединения с сетью!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.no_internet_connection, Toast.LENGTH_LONG).show();
         ButtonFloat buttonFloat = (ButtonFloat) findViewById(R.id.buttonFloat);
         buttonFloat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +51,27 @@ public class MainActivity extends ActionBarActivity implements ListFragment.OnFr
         return false;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+//        switch (item.getItemId()) {
+//            case R.id.action_add:
+//                Intent intent = new Intent(this, RegisteredMissingPets.class);
+//                startActivity(intent);
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     public void OnFragmentInteractionListener(PureAnimal missingPets) {
 

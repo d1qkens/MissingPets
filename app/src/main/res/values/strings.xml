@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Утерянные животные</string>
-    <string name="action_settings">Настройки</string>
     <string name="title_activity_info_page">InfoPage</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_registered_missing_pets">RegisteredMissingPets</string>
+    <string name="app_name">Утерянные животные</string>
+    <string name="action_settings">Настройки</string>
+    <string name="title_activity_info">Информация о животном</string>
+    <string name="add_animal">Добавление животного</string>
+    <string name="no_internet_connection">Нет соединения с сетью!</string>
+    <string name="title_activity_adding_form">Добавление животного</string>
+    <string name="add_info">Введите данные:</string>
+    <string name="info_page">Информация животного</string>
 
 </resources>
