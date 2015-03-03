@@ -6,13 +6,11 @@
     tools:context="com.example.retrofittest.Fragment.ListFragment">
 
     <GridView
-        android:id="@+id/list_grid"
+        android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="@integer/num_columns"/>
 
-
-        />
 
 
 </FrameLayout>

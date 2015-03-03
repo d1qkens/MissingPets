@@ -48,10 +48,9 @@ public class MainActivity extends ActionBarActivity implements ListFragment.OnFr
         return false;
     }
 
-
-
     @Override
-    public void onFragmentInteraction(PureAnimal missingPets) {
+    public void OnFragmentInteractionListener(PureAnimal missingPets) {
+
 
     }
 }

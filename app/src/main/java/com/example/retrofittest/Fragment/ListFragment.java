@@ -3,22 +3,23 @@ package com.example.retrofittest.Fragment;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.CursorLoader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.Toast;
 
 import com.example.retrofittest.AdapterFragment;
 import com.example.retrofittest.R;
 import com.example.retrofittest.data.model.PureAnimal;
 import com.example.retrofittest.databases.ContentApiProvider;
 
-
-public class ListFragment extends android.support.v4.app.ListFragment implements AbsListView.OnItemClickListener, android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor> {
-
+public class ListFragment extends Fragment implements
+        android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor> {
     private static final int ID_LOADER = 0;
     private OnFragmentInteractionListener mListener;
 
@@ -31,39 +32,29 @@ public class ListFragment extends android.support.v4.app.ListFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // TODO: Change Adapter to display your content
-//        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-//                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_item, container, false);
+        LayoutInflater gridInflater = (LayoutInflater) getActivity().getSystemService(getActivity().LAYOUT_INFLATER_SERVICE);
+        View view = gridInflater.inflate(R.layout.fragment_item, null);
+        GridView gridView = (GridView) view.findViewById(android.R.id.list);
+
         mCursor = getActivity().getContentResolver().query(ContentApiProvider.CONTENT_URI, null, null, null, null);
-        mAdapter = new AdapterFragment(getActivity(), mCursor);
-
-
-        setListAdapter(mAdapter);
+        mAdapter = new AdapterFragment(getActivity(), mCursor, 0);
+        gridView.setAdapter(mAdapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("Animals", "Listener");
+                Toast.makeText(getActivity(), "Click "+id, Toast.LENGTH_LONG).show();
+            }
+        });
+        //setListAdapter(mAdapter);
         getActivity().getSupportLoaderManager().initLoader(ID_LOADER, null, this);
-        // Set the adapter
-
-
-        // Set OnItemClickListener so we can be notified on item clicks
-//        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(getActivity(), "Сработал сет он слик листенер", Toast.LENGTH_LONG).show();
-//            }
-//        });
 
         return view;
     }
@@ -87,19 +78,10 @@ public class ListFragment extends android.support.v4.app.ListFragment implements
 
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if (null != mListener) {
-            // Notify the active callbacks interface (the activity, if the
-            // fragment is attached to one) that an item has been selected.
-
-        }
-    }
-
-
-    @Override
     public android.support.v4.content.Loader<Cursor> onCreateLoader(int id, Bundle args) {
         return new CursorLoader(getActivity(), ContentApiProvider.CONTENT_URI, null, null, null, null);
     }
+
 
     @Override
     public void onLoadFinished(android.support.v4.content.Loader<Cursor> loader, Cursor data) {
@@ -111,9 +93,10 @@ public class ListFragment extends android.support.v4.app.ListFragment implements
         mAdapter.swapCursor(null);
     }
 
+
+
     public interface OnFragmentInteractionListener {
 
-        public void onFragmentInteraction(PureAnimal missingPets);
+        public void OnFragmentInteractionListener(PureAnimal missingPets);
     }
-
 }

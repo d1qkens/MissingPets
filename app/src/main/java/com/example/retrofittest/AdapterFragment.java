@@ -1,7 +1,6 @@
 package com.example.retrofittest;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,19 +14,21 @@ import android.widget.TextView;
 
 import com.example.retrofittest.databases.MissingPetsDatabase;
 
-public class AdapterFragment extends CursorAdapter implements DialogInterface.OnClickListener{
+public class AdapterFragment extends CursorAdapter{
     private static final String LOG ="Animals" ;
     private final Context context;
+
+    public AdapterFragment(Context context, Cursor c, int flags) {
+        super(context, c, flags);
+        this.context=context;
+    }
 
     @Override
     public int getCount() {
         return super.getCount();
     }
 
-    public AdapterFragment(Context context, Cursor c) {
-        super(context, c);
-        this.context = context;
-    }
+
 
 
     @Override
@@ -67,8 +68,4 @@ public class AdapterFragment extends CursorAdapter implements DialogInterface.On
         }
     }
 
-    @Override
-    public void onClick(DialogInterface dialog, int which) {
-
-    }
 }
