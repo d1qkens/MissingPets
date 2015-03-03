@@ -26,10 +26,9 @@ public class ContentApiProvider extends ContentProvider {
 
         String orderBy;
 
-        if(TextUtils.isEmpty(sortOrder)) {
+        if (TextUtils.isEmpty(sortOrder)) {
             orderBy = MissingPetsDatabase.PetsTable.ID;
-        }
-        else {
+        } else {
             orderBy = sortOrder;
         }
 
@@ -43,15 +42,14 @@ public class ContentApiProvider extends ContentProvider {
         ContentValues contentValues = new ContentValues(values);
         long rowId = db.insertWithOnConflict(MissingPetsDatabase.PetsTable.TABLE_NAME, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
 
-        if(rowId<=0){
+        if (rowId <= 0) {
             try {
-                throw new SQLException("Failed to insert row into "+uri);
+                throw new SQLException("Failed to insert row into " + uri);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
             return null;
-        }
-        else  {
+        } else {
             Uri url = ContentUris.withAppendedId(CONTENT_URI, rowId);
             getContext().getContentResolver().notifyChange(url, null);
 

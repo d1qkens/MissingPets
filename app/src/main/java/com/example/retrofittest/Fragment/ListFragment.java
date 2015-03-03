@@ -1,6 +1,7 @@
 package com.example.retrofittest.Fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,12 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import com.example.retrofittest.AdapterFragment;
+import com.example.retrofittest.InfoPage;
 import com.example.retrofittest.R;
 import com.example.retrofittest.data.model.PureAnimal;
 import com.example.retrofittest.databases.ContentApiProvider;
+import com.example.retrofittest.databases.MissingPetsDatabase;
 
 public class ListFragment extends Fragment implements
         android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor> {
@@ -50,7 +52,13 @@ public class ListFragment extends Fragment implements
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.e("Animals", "Listener");
-                Toast.makeText(getActivity(), "Click "+id, Toast.LENGTH_LONG).show();
+                mCursor.moveToPosition(position);
+                int number = mCursor.getInt(mCursor.getColumnIndex(MissingPetsDatabase.PetsTable.ID));
+
+                Intent intent = new Intent(getActivity(), InfoPage.class);
+                intent.putExtra(InfoPage.NUMBER, number);
+                startActivity(intent);
+                //Toast.makeText(getActivity(), "Click "+id, Toast.LENGTH_LONG).show();
             }
         });
         //setListAdapter(mAdapter);

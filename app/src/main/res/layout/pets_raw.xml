@@ -1,48 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:id="@+id/pets"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     android:weightSum="1">
 
     <ImageView
+        android:id="@+id/dogImage"
         android:layout_width="fill_parent"
         android:layout_height="300dp"
-        android:id="@+id/dogImage"
-        android:src="@drawable/doggie"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp" />
+        android:src="@drawable/doggie" />
 
     <TextView
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Address"
         android:id="@+id/address"
-        android:layout_gravity="center_horizontal"
-        android:textSize="40dp"
-        android:textColor="#FFFFFF"
-        android:layout_alignLeft="@+id/dogImage"
-
-
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Nickname"
-        android:id="@+id/nickname"
+        android:layout_alignLeft="@+id/dogImage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/dogImage"
         android:layout_gravity="center_horizontal"
-        android:textSize="20dp"
+        android:layout_marginLeft="40dp"
+
+        android:layout_marginTop="10dp"
+        android:text="Address"
+
+
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FFFFFF"
-        android:layout_below="@+id/address"
+        android:textSize="40dp" />
+
+    <TextView
+        android:id="@+id/nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/address"
         android:layout_alignStart="@+id/address"
-        android:layout_marginTop="-7dp" />
+        android:layout_below="@+id/address"
+        android:layout_gravity="center_horizontal"
+        android:text="Nickname"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp" />
 </RelativeLayout>

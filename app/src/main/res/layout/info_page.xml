@@ -4,7 +4,143 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.retrofittest.InfoPage">
+    tools:context="com.example.retrofittest.InfoActivity">
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#c5cae9">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/imageView"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/doggie" />
+
+            <TextView
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Nickname"
+                android:id="@+id/nickname"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/imageView"
+                android:layout_toEndOf="@+id/imageView"
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Address"
+                android:id="@+id/address"
+                android:textSize="20dp"
+                android:layout_below="@+id/nickname"
+                android:layout_alignLeft="@+id/nickname"
+                android:layout_alignStart="@+id/nickname"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Gender"
+                android:id="@+id/gender"
+                android:layout_below="@+id/address"
+                android:layout_alignLeft="@+id/address"
+                android:layout_alignStart="@+id/address" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Порода:"
+                android:id="@+id/breed"
+                android:textStyle="bold"
+                android:layout_below="@+id/imageView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Breed info"
+                android:id="@+id/breed_i"
+
+                android:layout_alignTop="@+id/breed"
+                android:layout_toRightOf="@+id/breed"
+                android:layout_toEndOf="@+id/breed" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Окрас:"
+                android:id="@+id/color"
+                android:textStyle="bold"
+                android:layout_below="@+id/breed_i"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Color Info"
+                android:id="@+id/color_i"
+                android:layout_alignTop="@+id/color"
+                android:layout_toRightOf="@+id/color"
+                android:layout_toEndOf="@+id/color"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Контакты:"
+                android:id="@+id/contacts"
+                android:textStyle="bold"
+                android:layout_below="@id/color_i" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Contacts Info"
+                android:id="@+id/contacts_i"
+                android:layout_below="@+id/contacts" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Дополнительно:"
+                android:id="@+id/other"
+                android:textStyle="bold"
+                android:layout_below="@+id/contacts_i"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Other Info"
+                android:id="@+id/other_i"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/other"
+                android:layout_alignParentLeft="true" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

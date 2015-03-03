@@ -11,29 +11,29 @@
     tools:context=".MainActivity">
 
     <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.retrofittest.Fragment.ListFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:name="com.example.retrofittest.Fragment.ListFragment"
-        android:id="@+id/fragment"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         tools:layout="@layout/fragment_item" />
 
     <com.gc.materialdesign.views.ButtonFloat
         android:id="@+id/buttonFloat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#1E88E5"
-        materialdesign:animate="true"
-        materialdesign:iconDrawable="@mipmap/ic_button"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_marginBottom="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"       />
+        android:background="#3F51B5"
+        materialdesign:animate="true"
+        materialdesign:iconDrawable="@mipmap/ic_button" />
 
 
 </RelativeLayout>
